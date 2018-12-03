@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h2 Login
-    form(@click.prevent='login')
+    form(@submit.prevent='login')
       br
       input(type='email' v-model='email')
       br
