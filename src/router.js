@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import About from './views/About.vue'
@@ -8,7 +9,7 @@ import PostNew from './views/PostNew.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -38,3 +39,20 @@ export default new Router({
     }
   ]
 })
+
+const getUser = () => {
+  if (!store.getters.userPresent) {
+    const user = localStorage.getItem('user')
+    if (user) {
+      const token = JSON.parse(user).token
+      store.commit('setUser', token)
+    }
+  }
+}
+
+router.beforeEach((to, from, next) => {
+  getUser()
+  next()
+})
+
+export default router

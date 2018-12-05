@@ -7,15 +7,17 @@ import jwt from 'jsonwebtoken'
 
 Vue.use(Vuex)
 
+const userInterface = {
+  token: null,
+  name: String,
+  email: String,
+  id: Number
+}
+
 export default new Vuex.Store({
   state: {
     posts: [],
-    user: {
-      token: null,
-      name: String,
-      email: String,
-      id: Number
-    }
+    user: userInterface
   },
 
   getters: {
@@ -29,11 +31,15 @@ export default new Vuex.Store({
       state.posts = payload
     },
     setUser (state, token) {
-      var decoded = jwt.decode(token)
-      const user = {...decoded, token}
-      console.log('decoded', user)
-      localStorage.setItem('user', user)
-      state.user = user
+      if (token) {
+        const decoded = jwt.decode(token)
+        const user = {...decoded, token}
+        localStorage.setItem('user', JSON.stringify(user))
+        state.user = user
+      } else {
+        localStorage.removeItem('user')
+        state.user = userInterface
+      }
     }
   },
 
