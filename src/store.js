@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from '@/config/axios'
 import Routes from '@/config/routes'
 import router from '@/router'
 import jwt from 'jsonwebtoken'
@@ -61,6 +61,15 @@ export default new Vuex.Store({
     fetchPost (context, slug) {
       let url = Routes.post(slug)
       return axios.get(url)
+    },
+    async savePost (context, payload) {
+      try {
+        await axios.post(Routes.posts, payload)
+        router.push({name: 'home'})
+      } catch (error) {
+        console.log(error)
+        router.push({name: 'Login'})
+      }
     }
   }
 })
