@@ -1,12 +1,16 @@
 <template lang="pug">
   div
+    div(v-if='userPresent && user.roles.includes("admin")')
+      button(@click='deletePost(post.slug)') Delete
+      div(v-if='deleted') Your post has been deleted
     h2 {{post.title}}
     p {{post.body}}
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 export default {
-  props: ['post'],
   name: 'post-item',
   created () {
     this.getPost()
@@ -15,12 +19,18 @@ export default {
     post: {}
   }),
   methods: {
-    getPost () {
-      this.$store.dispatch('fetchPost', this.$route.params.slug)
-        .then(resp => {
-          this.post = resp.data
-        })
+    async getPost () {
+      const slug = this.$route.params.slug
+      const resp = await this.$store.dispatch('fetchPost', slug)
+      this.post = resp.data
+    },
+    deletePost (slug) {
+      this.$store.dispatch('deletePost', slug)
     }
+  },
+  computed: {
+    ...mapState(['user']),
+    ...mapGetters(['userPresent'])
   }
 }
 </script>

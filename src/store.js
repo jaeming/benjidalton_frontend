@@ -40,6 +40,13 @@ export default new Vuex.Store({
         localStorage.removeItem('user')
         state.user = userInterface
       }
+    },
+    addPost (state, post) {
+      state.posts.push(post)
+    },
+    removePost (state, slug) {
+      const index = state.posts.findIndex(post => post.slug === slug)
+      state.posts.splice(index, 1)
     }
   },
 
@@ -64,11 +71,22 @@ export default new Vuex.Store({
     },
     async savePost (context, payload) {
       try {
-        await axios.post(Routes.posts, payload)
+        const post = await axios.post(Routes.posts, payload)
+        context.commit('addPost', post)
         router.push({name: 'home'})
       } catch (error) {
         console.log(error)
         router.push({name: 'Login'})
+      }
+    },
+    async deletePost (context, slug) {
+      try {
+        await axios.delete(Routes.post(slug))
+        context.commit('removePost', slug)
+        router.push({name: 'home'})
+      } catch (error) {
+        console.log(error)
+        alert('Delete failed.')
       }
     }
   }
