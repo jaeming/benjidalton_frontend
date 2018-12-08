@@ -88,6 +88,15 @@ export default new Vuex.Store({
         console.log(error)
         alert('Delete failed.')
       }
+    },
+    async updatePost (context, payload) {
+      try {
+        await axios.patch(Routes.post(payload.slug), payload)
+        router.push({name: 'home'})
+      } catch (error) {
+        console.log(error)
+        alert('Update failed.')
+      }
     }
   }
 })

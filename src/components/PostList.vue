@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  mounted () {
+  created () {
     this.$store.dispatch('fetchPosts')
   },
   name: 'post-list',

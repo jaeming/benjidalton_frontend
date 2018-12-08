@@ -2,7 +2,9 @@
   div
     div(v-if='userPresent && user.roles.includes("admin")')
       button(@click='deletePost(post.slug)') Delete
-      div(v-if='deleted') Your post has been deleted
+      | &nbsp; &nbsp;
+      router-link(:to='{name: "PostEdit", params: post.slug}')
+        button Update
     h2 {{post.title}}
     p {{post.body}}
 </template>
@@ -26,6 +28,9 @@ export default {
     },
     deletePost (slug) {
       this.$store.dispatch('deletePost', slug)
+    },
+    updatePost (slug) {
+      this.$store.dispatch('updatePost', slug)
     }
   },
   computed: {

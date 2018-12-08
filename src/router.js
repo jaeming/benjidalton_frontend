@@ -6,6 +6,7 @@ import Login from './views/Login.vue'
 import About from './views/About.vue'
 import Post from './views/Post.vue'
 import PostNew from './views/PostNew.vue'
+import PostEdit from './views/PostEdit.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ const router = new Router({
       path: '/post/new',
       name: 'PostNew',
       component: PostNew
+    },
+    {
+      path: '/post/edit/:slug',
+      name: 'PostEdit',
+      component: PostEdit
     }
   ]
 })
