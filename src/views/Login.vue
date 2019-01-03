@@ -19,6 +19,7 @@ div
       input(type='submit' v-model='submit')
 </template>
 <script>
+import { Auth } from '@/lib/auth.js'
 import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'Login',
@@ -38,7 +39,7 @@ export default {
       this.$store.dispatch('login', {email: this.email, password: this.password})
     },
     signOut () {
-      this.$store.commit('setUser', undefined)
+      Auth.local.remove()
     }
   }
 }

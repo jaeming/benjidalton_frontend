@@ -1,14 +1,14 @@
-const host = 'http://localhost:3030/'
-const prefix = 'api/'
+const isProd = process.env.NODE_ENV === 'production'
+const host = isProd ? 'https://api.benjidalton.com' : 'http://localhost:3000/'
 
 export default class Routes {
   static get posts () {
-    return `${host}${prefix}posts`
+    return `${host}posts`
   }
   static post (slug) {
-    return `${host}${prefix}posts/${slug}`
+    return `${host}posts/${slug}`
   }
   static get login () {
-    return `${host}${prefix}sessions`
+    return `${host}sessions`
   }
 }

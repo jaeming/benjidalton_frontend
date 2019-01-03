@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '@/store'
+import { Auth } from '@/lib/auth.js'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import About from './views/About.vue'
@@ -36,7 +36,10 @@ const router = new Router({
     {
       path: '/post/new',
       name: 'PostNew',
-      component: PostNew
+      component: PostNew,
+      beforeEnter: (to, from, next) => {
+        if (Auth.loggedIn()) { next() }
+      }
     },
     {
       path: '/post/edit/:slug',
@@ -46,18 +49,8 @@ const router = new Router({
   ]
 })
 
-const getUser = () => {
-  if (!store.getters.userPresent) {
-    const user = localStorage.getItem('user')
-    if (user) {
-      const token = JSON.parse(user).token
-      store.commit('setUser', token)
-    }
-  }
-}
-
 router.beforeEach((to, from, next) => {
-  getUser()
+  Auth.currentUser()
   next()
 })
 

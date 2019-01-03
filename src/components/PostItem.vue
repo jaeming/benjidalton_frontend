@@ -1,5 +1,5 @@
 <template lang="pug">
-  .entry
+  .entry.container
     div(v-if='userPresent && user.roles.includes("admin")')
       button(@click='deletePost(post.slug)') Delete
       | &nbsp; &nbsp;
@@ -39,11 +39,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.entry {
-  margin: 5rem auto;
-  max-width: 800px;
-  box-shadow: -2px -1px 33px 3px rgba(56,56,56,0.52);
-}
-</style>
