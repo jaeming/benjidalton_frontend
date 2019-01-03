@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+import jwtDecode from 'jwt-decode'
 import store from '../store'
 
 const UserInterface = {
@@ -35,7 +35,7 @@ const Auth = {
     },
 
     save (token) {
-      const decoded = jwt.decode(token)
+      const decoded = jwtDecode(token)
       const user = {...decoded, token}
       localStorage.setItem('user', JSON.stringify(user))
       store.commit('setUser', user)
