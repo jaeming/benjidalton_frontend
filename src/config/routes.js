@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
-const host = isProd ? 'https://api.benjidalton.com' : 'http://localhost:3000/'
+const host = isProd ? 'https://api.benjidalton.com/' : 'http://localhost:3000/'
 
 export default class Routes {
   static get posts () {
