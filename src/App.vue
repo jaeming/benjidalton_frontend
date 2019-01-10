@@ -62,7 +62,7 @@ a {
   margin: 0 auto;
 }
 
-.entry {
+.entry, .box {
   padding: 1rem;
   margin: 1.2rem auto;
   background: rgba(37, 37, 37, 0.418);
