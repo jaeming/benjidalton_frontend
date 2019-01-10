@@ -11,7 +11,8 @@
       br
       label Body
       br
-      textarea(v-model='body')
+      .editor
+        VueTrix(v-model='body' @trix-attachment-add='addImage' placeholder="Enter content")
       br
       br
       input(type='checkbox' v-model='published')
@@ -23,8 +24,10 @@
 </template>
 
 <script>
+import VueTrix from 'vue-trix'
 export default {
   name: 'PostNew',
+  components: { VueTrix },
   data () {
     return {
       title: '',
@@ -39,7 +42,29 @@ export default {
         body: this.body,
         published: this.published
       })
+    },
+    async addImage (evt) {
+      let file = evt.attachment.file
+      let form = new FormData()
+      form.append('Content-Type', file.type)
+      form.append('image', file)
+      const resp = await this.$store.dispatch('imageUpload', form)
+      evt.attachment.setUploadProgress(100)
+      console.log(resp)
+      evt.attachment.setAttributes({
+        url: resp.data.url,
+        href: resp.data.url
+      })
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .editor {
+    background: #fff;
+    padding: .5rem;
+    border-radius: .2rem;
+    color: #383838;
+  }
+</style>

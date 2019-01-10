@@ -95,6 +95,14 @@ export default new Vuex.Store({
         console.log(error)
         alert('Update failed.')
       }
+    },
+    async imageUpload (context, payload) {
+      console.log(Routes.images)
+      return axios.post(
+        Routes.images,
+        payload,
+        {headers: {'Content-Type': 'multipart/form-data'}}
+      )
     }
   }
 })
