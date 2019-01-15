@@ -6,7 +6,8 @@
         h3.post-title
           router-link(:to='{name: "post", params: {slug: post.slug}}')
             | {{post.title}}
-        div(v-html='post.body')
+        .trix-content
+          div(v-html='post.summary')
         small {{post.date}}
 </template>
 
