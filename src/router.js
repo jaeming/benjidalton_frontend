@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import { Auth } from '@/lib/auth.js'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
-import About from './views/About.vue'
+import Photos from './views/Photos.vue'
 import Post from './views/Post.vue'
 import PostEdit from './views/PostEdit.vue'
 const PostNew = () => import('./views/PostNew.vue')
@@ -29,9 +29,9 @@ const router = new Router({
       component: Post
     },
     {
-      path: '/about',
-      name: 'about',
-      component: About
+      path: '/photos',
+      name: 'photos',
+      component: Photos
     },
     {
       path: '/post/new',

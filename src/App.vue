@@ -4,7 +4,7 @@
       .title Benji Dalton
       .links
         router-link.link(:to='{name: "home"}') Home
-        router-link.link(to='/about') About
+        router-link.link(to='/photos') Photos
         router-link.link(to='/music') Music
         router-link.link(to='/contact') Contact
     main#main-layout

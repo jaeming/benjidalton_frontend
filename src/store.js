@@ -97,12 +97,14 @@ export default new Vuex.Store({
       }
     },
     async imageUpload (context, payload) {
-      console.log(Routes.images)
       return axios.post(
-        Routes.images,
+        Routes.images(),
         payload,
         {headers: {'Content-Type': 'multipart/form-data'}}
       )
+    },
+    async fetchPhotos (context) {
+      return axios.get(Routes.images('flickr'))
     }
   }
 })
