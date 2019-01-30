@@ -1,8 +1,9 @@
 <template lang='pug'>
 div
   div(v-for='photo in photos')
-    p {{photo.title}}
-    img(:src='photo.url')
+    a(:href='photo.webUrl' target='_blank')
+      p {{photo.title}}
+      img(:src='photo.imageUrl')
 </template>
 
 <script>
