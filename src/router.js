@@ -7,6 +7,7 @@ import About from './views/About.vue'
 import Post from './views/Post.vue'
 import PostEdit from './views/PostEdit.vue'
 const PostNew = () => import('./views/PostNew.vue')
+const SongNew = () => import('./views/SongNew.vue')
 
 Vue.use(Router)
 
@@ -45,6 +46,14 @@ const router = new Router({
       path: '/post/edit/:slug',
       name: 'PostEdit',
       component: PostEdit
+    },
+    {
+      path: '/song/new',
+      name: 'SongNew',
+      component: SongNew,
+      beforeEnter: (to, from, next) => {
+        if (Auth.loggedIn()) { next() }
+      }
     }
   ]
 })
