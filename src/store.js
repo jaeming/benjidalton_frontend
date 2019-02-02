@@ -14,6 +14,7 @@ const headers = {
 export default new Vuex.Store({
   state: {
     posts: [],
+    songs: [],
     user: {
       token: null,
       name: String,
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     setUser (state, user) {
       state.user = user
+    },
+    setSongs (state, songs) {
+      state.songs = songs
     }
   },
 
@@ -116,6 +120,10 @@ export default new Vuex.Store({
         payload,
         headers.formdata
       )
+    },
+    async fetchSongs (context) {
+      const resp = await axios.get(Routes.songs())
+      context.commit('setSongs', resp.data)
     }
   }
 })
