@@ -7,6 +7,10 @@ import {Auth} from '@/lib/auth.js'
 
 Vue.use(Vuex)
 
+const headers = {
+  formdata: {headers: {'Content-Type': 'multipart/form-data'}}
+}
+
 export default new Vuex.Store({
   state: {
     posts: [],
@@ -96,15 +100,22 @@ export default new Vuex.Store({
         alert('Update failed.')
       }
     },
-    async imageUpload (context, payload) {
+    imageUpload (context, payload) {
       return axios.post(
         Routes.images(),
         payload,
-        {headers: {'Content-Type': 'multipart/form-data'}}
+        headers.formdata
       )
     },
-    async fetchPhotos (context) {
+    fetchPhotos (context) {
       return axios.get(Routes.images('flickr'))
+    },
+    uploadSong (context, payload) {
+      return axios.post(
+        Routes.songs(),
+        payload,
+        headers.formdata
+      )
     }
   }
 })

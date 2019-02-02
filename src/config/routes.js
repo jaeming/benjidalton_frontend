@@ -14,4 +14,7 @@ export default class Routes {
   static images (opts = '') {
     return `${host}images/${opts}`
   }
+  static songs (slug = '') {
+    return `${host}songs/${slug}`
+  }
 }
