@@ -6,7 +6,8 @@
       router-link(:to='{name: "PostEdit", params: post.slug}')
         button Update
     h2 {{post.title}}
-    p {{post.body}}
+    .trix-content
+      div(v-html='post.body')
 </template>
 
 <script>

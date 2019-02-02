@@ -80,4 +80,11 @@ a {
   background: rgba(255, 255, 255, 0.192);
   padding: .17rem .5rem;
 }
+.trix-content {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 </style>

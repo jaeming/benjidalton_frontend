@@ -11,7 +11,7 @@ export default class Routes {
   static get login () {
     return `${host}sessions`
   }
-  static get images () {
-    return `${host}images`
+  static images (opts = '') {
+    return `${host}images/${opts}`
   }
 }

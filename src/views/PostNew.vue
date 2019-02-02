@@ -12,7 +12,7 @@
       label Body
       br
       .editor
-        VueTrix(v-model='body' @trix-attachment-add='addImage' placeholder="Enter content")
+        VueTrix(v-model='body' @trix-attachment-add='addImage' placeholder="Enter content" class="trix-content")
       br
       br
       input(type='checkbox' v-model='published')
