@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Photos from './views/Photos.vue'
 import Songs from './views/Songs.vue'
+import Song from './views/Song.vue'
 import Post from './views/Post.vue'
 import PostEdit from './views/PostEdit.vue'
 const PostNew = () => import('./views/PostNew.vue')
@@ -60,6 +61,12 @@ const router = new Router({
       path: '/songs',
       name: 'songs',
       component: Songs
+    },
+    {
+      path: '/songs/:slug',
+      name: 'song',
+      component: Song,
+      props: true
     }
   ]
 })

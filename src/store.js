@@ -48,6 +48,9 @@ export default new Vuex.Store({
     },
     setSongs (state, songs) {
       state.songs = songs
+    },
+    addSong (state, song) {
+      state.songs.push(song)
     }
   },
 
@@ -124,6 +127,10 @@ export default new Vuex.Store({
     async fetchSongs (context) {
       const resp = await axios.get(Routes.songs())
       context.commit('setSongs', resp.data)
+    },
+    async fetchSong (context, slug) {
+      const resp = await axios.get(Routes.songs(slug))
+      return resp.data
     }
   }
 })

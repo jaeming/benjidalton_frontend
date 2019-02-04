@@ -1,9 +1,11 @@
 <template lang="pug">
   div
     .song(v-for='song in songs')
-      h4 {{song.name}}
+      router-link(:to='{name: "song", params: {slug: song.slug}}')
+        h4 {{song.name}}
       p {{song.size}}
-      a(:href='song.url') link
+      br
+      br
 </template>
 
 <script>
