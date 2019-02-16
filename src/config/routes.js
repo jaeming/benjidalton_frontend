@@ -17,4 +17,7 @@ export default class Routes {
   static songs (slug = '') {
     return `${host}songs/${slug}`
   }
+  static messages (id = '') {
+    return `${host}messages/${id}`
+  }
 }

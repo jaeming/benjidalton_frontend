@@ -4,6 +4,7 @@ import { Auth } from '@/lib/auth.js'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Photos from './views/Photos.vue'
+import Contact from './views/Contact.vue'
 import Songs from './views/Songs.vue'
 import Song from './views/Song.vue'
 import Post from './views/Post.vue'
@@ -27,14 +28,19 @@ const router = new Router({
       component: Login
     },
     {
-      path: '/posts/:slug',
-      name: 'post',
-      component: Post
-    },
-    {
       path: '/photos',
       name: 'photos',
       component: Photos
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact
+    },
+    {
+      path: '/posts/:slug',
+      name: 'post',
+      component: Post
     },
     {
       path: '/post/new',
