@@ -9,6 +9,8 @@ import Songs from './views/Songs.vue'
 import Song from './views/Song.vue'
 import Post from './views/Post.vue'
 import PostEdit from './views/PostEdit.vue'
+import Messages from './views/Messages.vue'
+import Message from './views/Message.vue'
 const PostNew = () => import('./views/PostNew.vue')
 const SongNew = () => import('./views/SongNew.vue')
 
@@ -72,6 +74,17 @@ const router = new Router({
       path: '/songs/:slug',
       name: 'song',
       component: Song,
+      props: true
+    },
+    {
+      path: '/messages',
+      name: 'messages',
+      component: Messages
+    },
+    {
+      path: '/message/:id',
+      name: 'message',
+      component: Message,
       props: true
     }
   ]

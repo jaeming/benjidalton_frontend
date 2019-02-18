@@ -15,6 +15,7 @@ export default new Vuex.Store({
   state: {
     posts: [],
     songs: [],
+    messages: [],
     user: {
       token: null,
       name: String,
@@ -51,6 +52,13 @@ export default new Vuex.Store({
     },
     addSong (state, song) {
       state.songs.push(song)
+    },
+    setMessages (state, messages) {
+      state.messages = messages
+    },
+    updateMessage (state, message) {
+      const index = state.messages.findIndex(m => m.id === message.id)
+      state.messages.splice(index, 1, message)
     }
   },
 
@@ -134,6 +142,18 @@ export default new Vuex.Store({
     },
     sendMessage (context, payload) {
       return axios.post(Routes.messages(), payload)
+    },
+    async fetchMessages (context) {
+      const resp = await axios.get(Routes.messages())
+      context.commit('setMessages', resp.data)
+    },
+    async fetchMessage (context, id) {
+      const resp = await axios.get(Routes.messages(id))
+      return resp.data
+    },
+    async updateMessage (context, payload) {
+      const resp = await axios.put(Routes.messages(payload.id), payload)
+      context.commit('updateMessage', resp.data)
     }
   }
 })
