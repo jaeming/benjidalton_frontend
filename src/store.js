@@ -77,6 +77,11 @@ export default new Vuex.Store({
         }
       }
     },
+    async register (context, payload) {
+      const resp = await axios.post(Routes.register, payload)
+      Auth.local.save(resp.data)
+      router.push({name: 'home'})
+    },
     fetchPosts (context) {
       axios.get(Routes.posts).then(resp => {
         context.commit('storePosts', resp.data)
