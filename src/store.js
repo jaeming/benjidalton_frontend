@@ -70,7 +70,7 @@ export default new Vuex.Store({
         router.push({name: 'home'})
       } catch (err) {
         if (err.response) {
-          alert(err.response.data.msg)
+          alert(err.response.data.error)
         } else {
           console.log(err)
           alert('something went wrong')
