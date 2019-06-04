@@ -77,10 +77,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .editor {
-    background: #fff;
-    padding: .5rem;
-    border-radius: .2rem;
-    color: #383838;
-  }
+  // .editor {
+  //   background: #fff;
+  //   padding: .5rem;
+  //   border-radius: .2rem;
+  //   color: #383838;
+  // }
 </style>

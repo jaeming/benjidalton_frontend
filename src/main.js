@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import SmartTable from 'vuejs-smart-table'
+import Buefy from 'buefy'
+import './assets/scss/app.scss'
+
+Vue.use(Buefy)
 
 Vue.use(SmartTable)
 

@@ -1,9 +1,13 @@
 <template lang='pug'>
 div
-  div(v-for='photo in photos')
-    a(:href='photo.webUrl' target='_blank')
-      p {{photo.title}}
-      img(:src='photo.imageUrl')
+  .container
+    h2 photos
+    p various photos that I have taken
+  .container.photo-box
+    div(v-for='photo in photos')
+      a(:href='photo.webUrl' target='_blank')
+        p {{photo.title}}
+        img(:src='photo.imageUrl')
 </template>
 
 <script>
@@ -12,7 +16,6 @@ export default {
   async mounted () {
     const resp = await this.$store.dispatch('fetchPhotos')
     this.photos = resp.data
-    console.log(this.photos)
   },
   data () {
     return {

@@ -1,90 +1,22 @@
 <template lang='pug'>
-  #app
-    nav#app-nav
-      .title Benji Dalton
-      .links
-        router-link.link(:to='{name: "home"}') Home
-        router-link.link(to='/photos') Photos
-        router-link.link(to='/songs') Music
-        router-link.link(to='/contact') Contact
-    main#main-layout
+  #benji-dalton
+    NavBar
+    main
       router-view
 </template>
 
+<script>
+import NavBar from './components/NavBar'
+export default {
+  components: { NavBar }
+}
+</script>
+
 <style lang="scss">
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-@import url(https://fonts.googleapis.com/css?family=Lobster);
-@import 'assets/style/reset';
-body {
-  font-family: Roboto;
-  background-image: url('assets/image/bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-}
-a {
-  color: #fff;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+  .trix-content {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
-}
-#app-nav {
-  width: 100%;
-  height: 2.6rem;
-  background: rgba(37, 37, 37, 0.65);
-  .title {
-    float: left;
-    line-height: 2.6rem;
-    color: rgb(255, 255, 255);
-    padding-left: 1rem;
-    font-family: Lobster;
-    font-size: 1.2rem;
-  }
-  .links {
-    float: right;
-    padding-right: 1rem;
-  }
-  .link {
-    font-size: .78rem;
-    color: rgb(255, 255, 255);
-    line-height: 2.65rem;
-    letter-spacing: .8px;
-    margin: 0 .4rem;
-  }
-}
-#main-layout {
-  margin: 1.6rem;
-}
-
-.container {
-  max-width: 60rem;
-  margin: 0 auto;
-}
-
-.entry, .box {
-  padding: 1rem;
-  margin: 1.2rem auto;
-  background: rgba(37, 37, 37, 0.65);
-  color: whitesmoke;
-}
-.post-title {
-  margin-bottom: 1rem;
-  a {
-    font-size: 1.5rem;
-    font-family: Montserrat;
-    color: #fff;
-  }
-}
-.router-link-exact-active {
-  background: rgba(255, 255, 255, 0.192);
-  padding: .17rem .5rem;
-}
-.trix-content {
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
 </style>
