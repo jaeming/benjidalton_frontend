@@ -1,13 +1,10 @@
 <template lang='pug'>
-  .home
-    div(v-if='userPresent')
-      p you are logged in as {{user.name}}
-      p You're roles are:
-        ul
-          li(v-for='role in user.roles') {{role}}
-        router-link(:to='{name: "PostNew"}' v-if='user.roles.includes("admin")')
-          button New Post
-    PostList
+.home
+  div(v-if='userPresent')
+    p you are logged in as {{user.name}}
+    router-link(:to='{name: "admin"}' v-if='user.roles.includes("admin")')
+      button Admin
+  PostList
 </template>
 
 <script>

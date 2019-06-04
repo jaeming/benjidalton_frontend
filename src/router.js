@@ -12,6 +12,7 @@ import Post from './views/Post.vue'
 import PostEdit from './views/PostEdit.vue'
 import Messages from './views/Messages.vue'
 import Message from './views/Message.vue'
+import Admin from './views/Admin.vue'
 const PostNew = () => import('./views/PostNew.vue')
 const SongNew = () => import('./views/SongNew.vue')
 
@@ -92,6 +93,11 @@ const router = new Router({
       name: 'message',
       component: Message,
       props: true
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     }
   ]
 })

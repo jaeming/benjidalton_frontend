@@ -32,7 +32,7 @@ a {
 #app-nav {
   width: 100%;
   height: 2.6rem;
-  background: rgba(66, 66, 66, 0.678);
+  background: rgba(37, 37, 37, 0.65);
   .title {
     float: left;
     line-height: 2.6rem;
@@ -65,7 +65,7 @@ a {
 .entry, .box {
   padding: 1rem;
   margin: 1.2rem auto;
-  background: rgba(37, 37, 37, 0.418);
+  background: rgba(37, 37, 37, 0.65);
   color: whitesmoke;
 }
 .post-title {
