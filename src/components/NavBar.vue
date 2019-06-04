@@ -10,13 +10,21 @@
           span
       #navMenu.navbar-menu(:class='mobileClass')
         .navbar-end
-          a.navbar-item.is-active(@click.prevent='navigateTo("/")') Home
-          a.navbar-item(@click.prevent='navigateTo("/photos")') Photos
-          a.navbar-item(@click.prevent='navigateTo("/songs")') Music
-          a.navbar-item(@click.prevent='navigateTo("/contact")') Contact
+          a.navbar-item(href='/' @click.prevent='navigateTo("/")' :class='isActiveNav("/")')
+            | Home
+          a.navbar-item(href='/photos' @click.prevent='navigateTo("/photos")' :class='isActiveNav("/photos")')
+            | Photos
+          a.navbar-item(href='/songs' @click.prevent='navigateTo("/songs")' :class='isActiveNav("/songs")')
+            | Music
+          a.navbar-item(href='/contact' @click.prevent='navigateTo("/contact")' :class='isActiveNav("/contact")')
+            | Contact
+          .navbar-item
+            a.button.is-danger(href='/admin' v-if='isAdmin' @click.prevent='navigateTo("/admin")')
+              | Admin
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'NavBar',
   data () {
@@ -31,11 +39,19 @@ export default {
     },
     toggleMobileMenu () {
       this.mobileMenu = !this.mobileMenu
+    },
+    isActiveNav (path) {
+      return {'is-active': path === this.$route.path}
     }
   },
   computed: {
+    ...mapState(['user']),
+    ...mapGetters(['userPresent']),
     mobileClass () {
       return {'is-active': this.mobileMenu}
+    },
+    isAdmin () {
+      return this.user && this.user.roles.includes('admin')
     }
   }
 }
