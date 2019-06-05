@@ -1,14 +1,11 @@
 <template lang="pug">
-  div
-    h2 posts
-    .container(v-for='post in posts')
-      article.entry
-        h3.post-title
-          router-link(:to='{name: "post", params: {slug: post.slug}}')
-            | {{post.title}}
+.section
+  .container
+    article(v-for='post in posts')
+      router-link.summary(:to='{name: "post", params: {slug: post.slug}}')
+        h3.title.headline {{post.title}}
         .trix-content
-          div(v-html='post.summary')
-        small {{post.date}}
+          p(v-html='post.summary')
 </template>
 
 <script>
@@ -24,3 +21,29 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+article {
+  margin: 4rem 0;
+  padding: 0 0.8rem;
+  border-left: 0.4rem solid #eea9a9;
+  &:hover {
+    background: #fff;
+    cursor: pointer;
+    .title {
+      transition: color ease-out 240ms;
+      color: #327e7a !important;
+    }
+  }
+}
+.headline {
+  color: #4a4a4a;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+.summary {
+  p {
+    color: #363636;
+  }
+}
+</style>

@@ -1,8 +1,8 @@
 <template lang="pug">
-  div
-    h2 new post
-    hr
-    PostForm(action='create')
+  .section
+    .container
+      h2.title new post
+      PostForm(action='create')
 </template>
 
 <script>

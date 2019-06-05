@@ -19,4 +19,12 @@ export default {
       height: auto;
     }
   }
+  html,
+  body {
+    min-height: 100%;
+  }
+  body {
+    height: 100vh;
+    background: whitesmoke;
+  }
 </style>

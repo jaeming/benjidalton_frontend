@@ -1,22 +1,15 @@
 <template lang="pug">
 form(@submit.prevent='savePost')
-  br
-  label Title
-  br
-  input(type='text' v-model='title')
-  br
-  br
-  label Body
-  br
-  .editor(v-if='!edit || body.length')
-    VueTrix(v-model='body' @trix-attachment-add='addImage' placeholder="Enter content" class="trix-content")
-  br
-  br
-  input(type='checkbox' v-model='published')
-  label &nbsp; Publish?
-  br
-  br
-  input(type='submit' value='Save')
+  b-field(label='Title')
+    b-input(v-model='title' required)
+  b-field(label='Summary')
+    b-input(type='textarea' v-model='summary' required)
+  b-field(label='Body')
+    .editor(v-if='!edit || body.length')
+      VueTrix(v-model='body' @trix-attachment-add='addImage' placeholder="Enter content" class="trix-content")
+  b-field(label='Published')
+    b-checkbox(v-model='published')
+  input.button.is-primary(type='submit' value='Save')
 </template>
 <script>
 import VueTrix from 'vue-trix'
@@ -27,6 +20,7 @@ export default {
   data () {
     return {
       title: '',
+      summary: '',
       body: '',
       published: false
     }
@@ -38,11 +32,11 @@ export default {
     if (this.edit) {
       const slug = this.$route.params.slug
       const resp = await this.$store.dispatch('fetchPost', slug)
-      const {title, body, published} = resp.data
-      console.log(body)
-      this.title = title
-      this.body = body
-      this.published = published
+      const post = resp.data
+      this.title = post.title
+      this.summary = post.summary
+      this.body = post.body
+      this.published = post.published
     }
   },
   methods: {
@@ -50,6 +44,7 @@ export default {
       let dispatcher = 'savePost'
       const params = {
         title: this.title,
+        summary: this.summary,
         body: this.body,
         published: this.published
       }
@@ -77,10 +72,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  // .editor {
-  //   background: #fff;
-  //   padding: .5rem;
-  //   border-radius: .2rem;
-  //   color: #383838;
-  // }
+  .editor {
+    background: #fff;
+    padding: .5rem;
+    border: 1px solid #ccc;
+    border-radius: .2rem;
+    color: #383838;
+  }
+  form {
+    border: 1px solid #ccc;
+    padding: 2rem;
+    background: #f1f1f1;
+    border-radius: .2rem;
+  }
 </style>
