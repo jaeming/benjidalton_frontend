@@ -15,16 +15,16 @@ export default {
 <style lang="scss">
   .trix-content {
     img {
+      box-shadow: 0 13px 20px rgba(0,0,0,0.24), 0 12px 9px rgba(0,0,0,0.16);
       max-width: 100%;
       height: auto;
     }
+    .attachment__caption.attachment__caption--edited {
+      margin-top: 1.3rem;
+    }
   }
-  html,
-  body {
-    min-height: 100%;
-  }
-  body {
-    height: 100vh;
-    background: whitesmoke;
+  .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
   }
 </style>

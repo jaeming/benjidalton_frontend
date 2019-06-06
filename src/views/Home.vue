@@ -1,6 +1,8 @@
 <template lang='pug'>
 #home
-  PostList
+  .columns.is-centered
+    .column.is-half
+      PostList
 </template>
 
 <script>

@@ -1,6 +1,9 @@
 <template lang='pug'>
-  div
-    PostItem
+  .section
+    .container
+      .columns.is-centered
+        .column
+          PostItem
 </template>
 <script>
 import PostItem from '@/components/PostItem.vue'

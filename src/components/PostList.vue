@@ -4,8 +4,9 @@
     article(v-for='post in posts')
       router-link.summary(:to='{name: "post", params: {slug: post.slug}}')
         h3.title.headline {{post.title}}
-        .trix-content
-          p(v-html='post.summary')
+        p {{post.summary}}
+        small.author By {{post.author}} on {{ post.date | moment("MMMM Do YYYY") }}
+
 </template>
 
 <script>
@@ -24,9 +25,9 @@ export default {
 
 <style lang="scss">
 article {
-  margin: 4rem 0;
+  margin: 2rem 0 4rem 0;
   padding: 0 0.8rem;
-  border-left: 0.4rem solid #eea9a9;
+  border-left: 0.8rem solid #e6e6e6;
   &:hover {
     background: #fff;
     cursor: pointer;
@@ -36,14 +37,21 @@ article {
     }
   }
 }
-.headline {
-  color: #4a4a4a;
+.headline.title {
+  font-size: 2.8rem;
+  color: #3e3e3e;
   display: block;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.9rem !important;
 }
 .summary {
   p {
+    font-size: 1.2rem;
     color: #363636;
   }
+}
+.author {
+  display: inline-block;
+  margin-top: .8rem;
+  color: #848484;
 }
 </style>
