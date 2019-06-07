@@ -1,20 +1,40 @@
 <template lang="pug">
-  div
-    .song(v-for='song in songs')
-      router-link(:to='{name: "song", params: {slug: song.slug}}')
-        h4 {{song.name}}
-      p {{song.size}}
-      br
-      br
+div
+  header
+    h2.section-title.has-text-centered Music
+    p.has-text-centered songs that I've written
+  .section
+    .container
+      .song(v-for='song in songs')
+        p {{song.name}}
+          | &nbsp;
+          small.size {{size(song.size)}}
+        SongPlayer(:url='song.url')
 </template>
 
 <script>
+import SongPlayer from '../components/SongPlayer'
 import { mapState } from 'vuex'
 export default {
   name: 'Songs',
+  components: {
+    SongPlayer
+  },
   mounted () {
     this.$store.dispatch('fetchSongs')
   },
-  computed: mapState(['songs'])
+  computed: mapState(['songs']),
+  methods: {
+    size (num) {
+      return `${Math.round((num * 0.000001) * 10) / 10} mb`
+    }
+  }
 }
 </script>
+<style lang="scss" scoped>
+  .size {
+    color: #848484;
+    font-size: .7rem;
+    margin-left: .4rem;
+  }
+</style>

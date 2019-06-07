@@ -1,37 +1,37 @@
 <template lang="pug">
-  div
-    h2 new Song
-    hr
-    form(enctype='multipart/form-data', novalidate='', v-if='isInitial || isSaving')
-      h1 Upload songs
-      .upload-content
-        input.input-file(
-          type='file',
-          multiple='',
-          :name='uploadFieldName',
-          :disabled='isSaving',
-          @change='filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length',
-          accept='mp3/*'
-        )
-        p(v-if='isInitial')
-          | Drag your mp3s here
-          br
-          | or click to browse
-        p(v-if='isSaving')
-          | Uploading {{fileCount}} files...
-    div(v-if='isSuccess')
-      h2 Uploaded {{uploadedFiles.length}} file(s) successfully.
-      p
-        button(@click='reset()') Upload again
-      ul.list-unstyled
-        li(v-for='item in uploadedFiles')
-          | {{item.name}}
+.section
+  .container
+    h2.title New Song
+    .columns
+      .column.is-6
+        form(enctype='multipart/form-data', novalidate='', v-if='isInitial || isSaving')
+          .upload-content
+            input.input-file(
+              type='file',
+              multiple='',
+              :name='uploadFieldName',
+              :disabled='isSaving',
+              @change='filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length',
+              accept='mp3/*'
+            )
+            div(v-if='isInitial')
+              p Drag your mp3s here
+              p or click to browse
+            div(v-if='isSaving')
+              p Uploading {{fileCount}} files...
+        div(v-if='isSuccess')
+          h2 Uploaded {{uploadedFiles.length}} file(s) successfully.
+          p
+            button(@click='reset()') Upload again
+          ul.list-unstyled
+            li(v-for='item in uploadedFiles')
+              | {{item.name}}
 
-    div(v-if='isFailed')
-      h2.error Uploaded failed.
-      button(@click='reset()') Try again
-      br
-      small {{uploadError}}
+        div(v-if='isFailed')
+          h2.error Uploaded failed.
+          button(@click='reset()') Try again
+          br
+          small {{uploadError}}
 </template>
 
 <script>
@@ -120,10 +120,10 @@ export default {
     background: lightblue;
   }
 
-  .dropbox p {
-    font-size: 1.2em;
+  p {
+    font-size: 1.1em;
     text-align: center;
-    padding: 50px 0;
+    padding: 1rem 0;
   }
 
   .error {

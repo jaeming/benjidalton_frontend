@@ -13,6 +13,9 @@ export default {
 </script>
 
 <style lang="scss">
+  html, body { background: whitesmoke; }
+  html { height: 100%; }
+  body { min-height: 100%; }
   .trix-content {
     img {
       box-shadow: 0 13px 20px rgba(0,0,0,0.24), 0 12px 9px rgba(0,0,0,0.16);
@@ -27,4 +30,12 @@ export default {
     font-size: 2.8rem;
     margin-bottom: 1rem;
   }
+  .small-title {
+    font-size: 1.6rem;
+  }
+  header {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: .1rem solid #dadada;
+ }
 </style>

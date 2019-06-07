@@ -51,7 +51,7 @@ export default {
       return {'is-active': this.mobileMenu}
     },
     isAdmin () {
-      return this.user && this.user.roles.includes('admin')
+      return this.userPresent && this.user.roles.includes('admin')
     }
   }
 }
