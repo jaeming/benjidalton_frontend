@@ -1,23 +1,23 @@
 <template lang="pug">
-div
-  div(v-if='userPresent')
-    p you are logged in as {{user.name}}
-    p You're roles are:
-      ul
-        li(v-for='role in user.roles') {{role}}
-    button(@click='signOut') Log Out
-  div(v-else)
-    h2 Register
-    form(@submit.prevent='register')
-      input(type='text' v-model='name')
-      br
-      input(type='email' v-model='email')
-      br
-      br
-      input(type='password' v-model='password')
-      br
-      br
-      input(type='submit' v-model='submit')
+.section
+  .container
+    .columns.is-centered
+      .column.is-4
+        .box
+          div(v-if='userPresent')
+            button.button.is-info(@click='signOut') Log Out
+
+          div(v-else)
+            h2.title Register
+            form(@submit.prevent='register')
+              b-field(label='name')
+                b-input(type='text' v-model='name')
+              b-field(label='email')
+                b-input(type='email' v-model='email')
+              b-field(label='password')
+                b-input(type='password' v-model='password')
+              input.button.is-primary(type='submit' v-model='submit')
+              router-link.is-pulled-right.lh-24(to='/login') Login instead
 </template>
 <script>
 import { Auth } from '@/lib/auth.js'

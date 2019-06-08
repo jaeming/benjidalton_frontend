@@ -34,8 +34,15 @@ export default {
     font-size: 1.6rem;
   }
   header {
-    margin-top: 2rem;
-    padding-bottom: 2rem;
+    background: #fff;
+    padding: 1rem 0 2rem 0;
     border-bottom: .1rem solid #dadada;
- }
+    box-shadow: 0 2px 22px rgba(0, 0, 0, 0.14), 0 1px 5px rgba(0, 0, 0, 0.16);
+  }
+  .lh-24 {
+    line-height: 2.4;
+  }
+  .box {
+    box-shadow: 0 2px 11px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15) !important;
+  }
 </style>
