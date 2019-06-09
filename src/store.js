@@ -145,8 +145,8 @@ export default new Vuex.Store({
       const resp = await axios.get(Routes.songs(slug))
       return resp.data
     },
-    sendMessage (context, payload) {
-      return axios.post(Routes.messages(), payload)
+    async sendMessage (context, payload) {
+      return axios.post(Routes.contact(), payload)
     },
     async fetchMessages (context) {
       const resp = await axios.get(Routes.messages())

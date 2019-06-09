@@ -23,4 +23,7 @@ export default class Routes {
   static messages (id = '') {
     return `${host}messages/${id}`
   }
+  static contact () {
+    return `${host}contacts`
+  }
 }
