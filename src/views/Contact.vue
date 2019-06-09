@@ -6,8 +6,8 @@
           .box
             div.has-text-centered(v-if='sent') Thanks. Message sent.
             form(v-else @submit.prevent='sendMessage')
-              b-field(label='From')
-                b-input(v-model='from' type='text' required)
+              b-field(label='Your Email')
+                b-input(v-model='from' type='email' required)
               b-field(label='Subject')
                 b-input(v-model='subject' type='text' required)
               b-field(label='Message')
