@@ -16,7 +16,7 @@
     "pug-plain-loader": "^1.0.0",
     "raw-loader": "^0.5.1",
     "vue": "^2.5.16",
-    "vue-moment": "^4.0.0",
+    "vue-moment": "^4.1.0",
     "vue-router": "^3.0.1",
     "vue-trix": "^0.6.0",
     "vuejs-smart-table": "^0.0.3",
